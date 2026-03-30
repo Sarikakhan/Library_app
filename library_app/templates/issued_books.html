@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div data-aos="fade-right"><div class="accent-line"></div><h1>Issued Books</h1></div>
+
+    <div class="card" data-aos="fade-up" style="margin-top: 30px; overflow-x: auto;">
+        {% if issued %}
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="text-align: left; border-bottom: 1px solid #e2e8f0;">
+                    <th style="padding: 12px;">Student</th>
+                    <th style="padding: 12px;">Book</th>
+                    <th style="padding: 12px;">Issue Date</th>
+                    <th style="padding: 12px;">Return Date</th>
+                    <th style="padding: 12px;">Fine</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in issued %}
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 12px;">{{ item.student }}</td>
+                    <td style="padding: 12px;">{{ item.book.title }}</td>
+                    <td style="padding: 12px;">{{ item.issue_date }}</td>
+                    <td style="padding: 12px;">{{ item.return_date }}</td>
+                    <td style="padding: 12px;">
+                        {% if item.fine %}
+                            Rs. {{ item.fine }}
+                        {% else %}
+                            No fine
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p style="margin: 0; color: #64748b;">No books have been issued yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}

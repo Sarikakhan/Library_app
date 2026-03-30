@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div data-aos="fade-right"><div class="accent-line"></div><h1>Library Collection</h1></div>
+    <form method="GET" style="margin-bottom: 40px; display: flex; gap: 10px;" data-aos="fade-up">
+        <input type="text" name="q" placeholder="Search by title..." class="form-input" style="width: 300px; margin: 0;">
+        <button type="submit" class="btn-modern">Search</button>
+    </form>
+    <div class="grid">
+        {% for book in books %}
+        <div class="card" data-aos="zoom-in">
+            <span style="background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 600;">{{ book.category }}</span>
+            <h3 style="margin-top:15px;">{{ book.title }}</h3>
+            <p style="color: #64748b; font-size: 14px;"><i class="fa-solid fa-pen-nib"></i> {{ book.author }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

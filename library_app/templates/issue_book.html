@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div data-aos="fade-right"><div class="accent-line"></div><h1>Issue New Book</h1></div>
+    
+    <div class="card" data-aos="zoom-in" style="max-width: 500px; margin: 40px auto;">
+        <p style="margin-bottom: 20px; color: #64748b; font-size: 14px;">Assign a book to a student from the library inventory.</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <style>
+                label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #1e293b; }
+                select, input { 
+                    width: 100%; 
+                    padding: 12px; 
+                    border: 1px solid #e2e8f0; 
+                    border-radius: 12px; 
+                    margin-bottom: 20px; 
+                    outline: none;
+                    background: #fff;
+                }
+                select:focus { border-color: #05A0E1; box-shadow: 0 0 0 4px rgba(5, 160, 225, 0.1); }
+            </style>
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn-modern" style="width: 100%; justify-content: center;">
+                <i class="fa-solid fa-plus-circle"></i> Complete Issue
+            </button>
+        </form>
+    </div>
+{% endblock %}
